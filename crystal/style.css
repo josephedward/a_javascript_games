@@ -1,0 +1,61 @@
+
+ 
+ body{
+height:auto;
+width:80%;
+background-color: blue;
+margin: 0 auto;
+text-align: center;
+display:block;
+}
+
+#instructions
+{
+    /* margin-top:200px; */
+    width:60%;
+    text-align: left;
+background-color:white;
+color:black;
+border: 5px solid green;
+}
+
+#crystalHolder{
+
+     width: 100%;
+}
+
+  .crystal-image {
+    margin: 25px;
+    text-align: center;
+  width: 200px;
+  height: 200px;
+  animation: blink2 .5s step-end infinite alternate; 
+  overflow: hidden;
+} 
+
+
+#statHolder{     
+    /* width:80%; */
+    border: 8px solid white; 
+    text-align: center;
+    font-size: 28px;
+     }
+     .stat
+     {
+     /* border: 4px solid black; */
+         padding:5px;
+         color:white;
+         /* border:5px solid black; */
+     }
+     
+@keyframes blink { 
+    50% { border: 8px solid #ff0000; } 
+ }
+
+ @keyframes blink2 { 
+    50% { border: 8px solid gold; } 
+ }
+
+
+
+ 

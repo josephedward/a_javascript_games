@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Document</title>
+  </head>
+  <body>
+
+    <div id="gameContainer">
+    <h1 style="text-align:center">Press Keys to Guess Computer Terms!</h1>
+    <p>Word to Guess:</p>
+    <p id="hidden-word"></p>
+    <p>Wins:</p>
+    <p id="wins"></p>
+    <p>Losses:</p>
+    <p id="losses"></p>
+    <p>Guesses Left:</p>
+    <p id="guesses-left"></p>
+    <p>Guesses So Far:</p>
+    <span>[</span><span id="guesses-so-far"></span><span>]</span>
+    </div>
+    <script>
+      var alphaSet = [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l",
+        "m",
+        "n",
+        "o",
+        "p",
+        "q",
+        "r",
+        "s",
+        "t",
+        "u",
+        "v",
+        "w",
+        "x",
+        "y",
+        "z"
+      ];
+
+      var terms = [
+        "algorithm",
+        "analog",
+        "app",
+        "application",
+        "array",
+        "backup",
+        "bandwidth",
+        "binary",
+        "bit",
+        "byte",
+        "bitmap",
+        "blog",
+        "blogger",
+        "bookmark",
+        "boot",
+        "broadband",
+        "browser",
+        "buffer",
+        "bug",
+        "bus",
+        "byte",
+        "cache",
+        "caps",
+        "lock",
+        "captcha",
+        "CD",
+        "CDROM",
+        "client",
+        "clip",
+        "art",
+        "clip",
+        "board",
+        "cloud",
+        "computing",
+        "command",
+        "compile",
+        "compress",
+        "computer",
+        "program",
+        "configure",
+        "cookie",
+        "copy",
+        "CPU",
+        "central",
+        "processing",
+        "unit",
+        "cybercrime",
+        "cyberspace",
+        "dashboard",
+        "data",
+        "data",
+        "mining",
+        "database",
+        "debug",
+        "decompress",
+        "delete",
+        "desktop",
+        "development",
+        "digital",
+        "disk",
+        "DNS",
+        "domain",
+        "system",
+        "document",
+        "domain",
+        "name",
+        "dot",
+        "matrix",
+        "download",
+        "drag",
+        "DVD",
+        "digital",
+        "versatile",
+        "disc",
+        "dynamic",
+        "email",
+        "emoticon",
+        "encrypt",
+        "encryption",
+        "enter",
+        "exabyte",
+        "FAQ",
+        "file",
+        "finder",
+        "firewall",
+        "firmware",
+        "flaming",
+        "flash",
+        "flash",
+        "drive",
+        "floppy",
+        "disk",
+        "flowchart",
+        "folder",
+        "font",
+        "format",
+        "frame",
+        "freeware",
+        "gigabyte",
+        "graphics",
+        "hack",
+        "hacker",
+        "hardware",
+        "home",
+        "page",
+        "host",
+        "html",
+        "hyperlink",
+        "hypertext",
+        "icon",
+        "inbox",
+        "integer",
+        "interface",
+        "Internet",
+        "IP",
+        "address",
+        "iteration",
+        "Java",
+        "joystick",
+        "junk",
+        "mail",
+        "kernel",
+        "key",
+        "keyboard",
+        "keyword",
+        "laptop",
+        "laser",
+        "printer",
+        "link",
+        "Linux",
+        "log",
+        "out",
+        "logic",
+        "login",
+        "lurking",
+        "Macintosh",
+        "macro",
+        "mainframe",
+        "malware",
+        "media",
+        "memory",
+        "mirror",
+        "modem",
+        "monitor",
+        "motherboard",
+        "mouse",
+        "multimedia",
+        "net",
+        "network",
+        "node",
+        "notebook",
+        "computer",
+        "offline",
+        "online",
+        "open",
+        "source",
+        "operating",
+        "system",
+        "option",
+        "output",
+        "page",
+        "password",
+        "paste",
+        "path",
+        "phishing",
+        "piracy",
+        "pirate",
+        "platform",
+        "plugin",
+        "podcast",
+        "popup",
+        "portal",
+        "print",
+        "printer",
+        "privacy",
+        "process",
+        "program",
+        "programmer",
+        "protocol",
+        "queue",
+        "QWERTY",
+        "RAM",
+        "random",
+        "access",
+        "memory",
+        "realtime",
+        "reboot",
+        "resolution",
+        "restore",
+        "ROM",
+        "read",
+        "root",
+        "router",
+        "runtime",
+        "save",
+        "scan",
+        "scanner",
+        "screen",
+        "screenshot",
+        "script",
+        "scroll",
+        "bar",
+        "search",
+        "engine",
+        "security",
+        "server",
+        "shareware",
+        "shell",
+        "shift",
+        "key",
+        "snapshot",
+        "networking",
+        "software",
+        "spam",
+        "spammer",
+        "spreadsheet",
+        "spyware",
+        "status",
+        "bar",
+        "storage",
+        "supercomputer",
+        "surf",
+        "syntax",
+        "table",
+        "tag",
+        "terminal",
+        "template",
+        "terabyte",
+        "text",
+        "editor",
+        "thread",
+        "toolbar",
+        "trash",
+        "Trojan",
+        "horse",
+        "typeface",
+        "undo",
+        "Unix",
+        "upload",
+        "URL",
+        "user",
+        "interface",
+        "username",
+        "utility",
+        "version",
+        "virtual",
+        "virtual",
+        "memory",
+        "virus",
+        "web",
+        "host",
+        "webmaster",
+        "website",
+        "widget",
+        "wiki",
+        "window",
+        "Windows",
+        "wireless",
+        "word",
+        "processor",
+        "workstation",
+        "Web",
+        "worm",
+        "XML",
+        "zip"
+      ];
+      var wins = 0;
+      var losses = 0;
+      var guessesLeft = 13;
+      var guessesSoFar = [];
+
+      writeStats();
+      var mainWord = setMainWord();
+      var hidWord = hideMainWord(mainWord);
+      var termLetters = termCharArr(mainWord);
+      var hTermLetters = termCharArr(hidWord);
+      displayHiddenWord(hTermLetters);
+
+
+      //drives program
+      document.onkeyup = function(event) {
+        var userGuess = event.key;
+        if (alphaSet.indexOf(userGuess) === -1) {
+          return;
+        }
+        //have to figure out how to win
+        //just search for * in hTermLetters?
+        if(termLetters.includes(userGuess))
+        {
+
+        var tempIndices=searchForCharIndices(userGuess,termLetters);
+        hTermLetters=replaceCharIndices(userGuess,tempIndices);
+        if(hTermLetters.includes("*")===false)
+        {
+            wins++;
+            reset();
+        }
+
+        }
+        else
+        {
+            console.log("letter not found in word");
+            guessesLeft--;
+            guessesSoFar.push(userGuess);
+            {
+                if(guessesLeft===0)
+                 {
+                   losses++;
+                  reset();
+                 }
+        }
+    }
+
+
+
+
+        displayHiddenWord(hTermLetters);
+        //always have this at end so that it is updated
+        writeStats();
+      }; //end onkeyup
+
+      function setMainWord() {
+        mainWord = terms[Math.floor(Math.random() * terms.length)];
+        mainWord = mainWord.toLowerCase();
+        console.log(mainWord);
+        return mainWord;
+      }
+
+      //need function for displaying word?
+      function hideMainWord(str) {
+        var hiddenStr = "";
+        for (x = 0; x < str.length; x++) {
+          hiddenStr += "*";
+        }
+        console.log(hiddenStr);
+        return hiddenStr;
+      }
+
+      function displayHiddenWord(str) {
+        document.getElementById("hidden-word").innerHTML = str.join("");
+      }
+
+      function termCharArr(term) {
+        var tempArr = term.split("");
+        console.log(tempArr);
+        return tempArr;
+      }
+
+
+
+
+      //WORKS!!!
+      function searchForCharIndices(char,arr)
+      {
+          var charIndices = [];
+          for(var i=0; i<arr.length;i++)
+          {
+            if (arr[i] === char) charIndices.push(i);
+        }
+
+        return charIndices;
+
+        }
+
+        function replaceCharIndices(theChar, charIndices)
+        {
+            for(var i=0;i<charIndices.length;i++)
+            {
+                hTermLetters[charIndices[i]]=theChar;
+            }
+
+            return hTermLetters;
+        }
+
+        function reset()
+      {
+        guessesLeft=13;
+        guessesSoFar=[];
+        mainWord = setMainWord();
+        hidWord = hideMainWord(mainWord);
+        termLetters = termCharArr(mainWord);
+        hTermLetters = termCharArr(hidWord);
+      displayHiddenWord(hTermLetters);
+
+
+      }
+
+
+
+
+
+
+      function getWins() {
+        document.getElementById("wins").innerHTML = wins;
+      }
+
+      function getLosses() {
+        document.getElementById("losses").innerHTML = losses;
+      }
+
+      function getGuessesLeft() {
+        document.getElementById("guesses-left").innerHTML = guessesLeft;
+      }
+
+      function getGuessesSoFar() {
+        document.getElementById("guesses-so-far").innerHTML = guessesSoFar;
+      }
+
+      function writeStats() {
+        getWins();
+        getLosses();
+        getGuessesLeft();
+        getGuessesSoFar();
+      }
+    </script>
+  </body>
+</html>
+

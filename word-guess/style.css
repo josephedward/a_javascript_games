@@ -1,0 +1,26 @@
+body {
+  background-image: url(wp2343898.jpg);
+  background-size: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+  font-family: "arial", "helvetica neue", Arial, Helvetica, sans-serif;
+  font-size: 18px;
+}
+
+#gameContainer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+  color: white;
+  padding: 20px;
+  border: 5px dashed white;
+  opacity: 0.8;
+}

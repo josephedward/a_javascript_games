@@ -1,0 +1,64 @@
+body {
+  /* background-image: url(../assets/3D-modern-interior-restaurant.jpg); */
+  background-size: 100%;
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+}
+
+.header {
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: white;
+}
+
+.foodButton {
+  margin: 5px;
+  color: white;
+  font-weight: bolder;
+  /* -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;   
+  
+font:black;   
+color:black;
+ font-size: 25px;    */
+  /* padding: 20px; */
+}
+
+/* #chefGuy {
+  z-index: -1;
+} */
+
+/* ************************************************unused*************** 
+.speech-bubble {
+    z-index: 1;
+  position: relative;
+  background: #ff0000;
+  border-radius: 0.4em;
+}
+.speech-bubble:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 26px solid transparent;
+  border-right-color: #ff0000;
+  border-left: 0;
+  margin-top: -26px;
+  margin-left: -26px;
+}
+#runningGuy{
+    padding: 50%;
+    width:300%;
+    height:300%;
+}
+/* 
+#backgroundImages{
+    width:100%;
+    height:100%;
+    margin:100px;
+    opacity:.2;
+    position:absolute;
+    z-index: -1;
+} */

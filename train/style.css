@@ -1,0 +1,21 @@
+body{
+    background-image: url('thomas_the_tank_engine.jpg');
+    /* background-position: 100%; */
+    background-size: 100%;
+}
+
+
+.panel{
+background-color: aqua;
+color:black;
+}
+/*  */
+.container .jumbotron{
+    background-color: blue;
+    color: white;
+}
+
+.panel-heading{
+    background-color: lightgreen;
+    color:black;
+}

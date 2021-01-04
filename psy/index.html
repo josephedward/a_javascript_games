@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=
+    
+    , initial-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>The Psychic Game</h1>
+    <img src="psychic-ability.jpg" height="300px" width="400px">
+    <p>Guess what letter I'm thinking of!</p>
+    <p>Wins:</p>
+    <p id="wins"></p>
+    <p>Losses:</p>
+    <p id="losses"></p>
+    <p>Guesses Left:</p>
+    <p id="guesses-left"></p>
+    <p>Guesses So Far:</p>
+    <p id="guesses-so-far"></p>
+
+    <script>
+      var alphaSet = [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l",
+        "m",
+        "n",
+        "o",
+        "p",
+        "q",
+        "r",
+        "s",
+        "t",
+        "u",
+        "v",
+        "w",
+        "x",
+        "y",
+        "z"
+      ];
+      var wins = 0;
+      var losses = 0;
+      var guessesLeft = 9;
+      var guessesSoFar = [];
+
+      writeStats(); 
+      cThought();
+
+      //drives program
+      document.onkeyup = function(event) {
+
+        // Determines which key was pressed.
+        var userGuess = event.key;
+        
+        if (alphaSet.indexOf(userGuess) === -1) {
+          return;
+        }
+
+        //works
+        if (userGuess === computerThought) {
+        console.log("got it");
+         wins++;
+         resetGuesses();
+        cThought();
+        } else {
+          console.log("nope");
+          guessesLeft--;
+          guessesSoFar.push(userGuess);
+         if(guessesLeft===0)
+         {
+           losses++;
+           resetGuesses();
+          cThought();
+         } 
+        }
+        writeStats();
+      };
+
+      function getWins() {
+        document.getElementById("wins").innerHTML=wins;
+      }
+
+      function getLosses() {
+        document.getElementById("losses").innerHTML=losses;
+      }
+
+      function getGuessesLeft() {
+        document.getElementById("guesses-left").innerHTML=guessesLeft;
+        
+      }
+
+// this is a getter, need a setter
+      function getGuessesSoFar(){
+        document.getElementById("guesses-so-far").innerHTML=guessesSoFar;
+      }
+
+      function writeStats()
+      {
+        getWins();
+        getLosses();
+        getGuessesLeft();
+        getGuessesSoFar();
+      }
+
+      function cThought()
+      {
+      computerThought =
+      alphaSet[Math.floor(Math.random() * alphaSet.length)];
+      console.log(computerThought);
+      return computerThought;
+      }
+
+      function resetGuesses()
+      {
+        guessesLeft=9;
+        guessesSoFar=[];
+
+      }
+    </script>
+  </body>
+</html>
+
+<!-- 
+        // getWins();
+      // getLosses();
+      // getGuessesLeft();
+
+      // var targetDiv = document.getElementById("guesses-so-far");
+        //   var newDiv = document.createElement("div");
+        //   newDiv.textContent = guessesSoFar;
+        //   targetDiv.appendChild(newDiv);
+
+
+// var targetDiv = document.getElementById("guesses-left");
+        // var newDiv = document.createElement("div");
+        // newDiv.textContent = guessesLeft;
+        // targetDiv.append(newDiv);
+        // targetDiv.removeChild();
+        // targetDiv.appendChild(newDiv);
+        // replaceChild(newDiv, targetDiv.children[0]);
+
+        // var targetDiv = document.getElementById("losses");
+        // var newDiv = document.createElement("div");
+        // newDiv.textContent = losses;
+        // targetDiv.appendChild(newDiv);
+
+
+        // var targetDiv = document.getElementById("wins");
+        // var newDiv = document.createElement("div");
+        // newDiv.textContent = wins;
+        // targetDiv.appendChild(newDiv);
+
+
+// var wins = 0;
+// var losses = 0;
+// var numGuesses=9;
+
+// ignore outer loop for now, just get 1 round of game going
+// for(;;){
+// Randomly chooses a choice from the options array. This is the Computer's guess.
+  // var gameOver = false;
+  //   var tempGuesses = [];
+  // var gameOver=false;
+    // while(tempGuesses.length<=9){
+
+
+
+// computerGuess();
+// if(rightGuess(userGuess)===false)
+// {
+//   return;
+// }
+
+
+
+
+// tempGuesses.push(userGuess);
+// if(tempGuesses.length===9)
+// {
+//     gameOver=true;
+// }
+// function writeStates()
+// {
+// console.log(wins);
+// console.log(losses);
+// console.log(numGuesses);
+// console.log(tempGuesses);
+
+// };
+
+// function computerGuess(){
+//   var computerThought =
+//         alphaSet[Math.floor(Math.random() * alphaSet.length)];
+//       console.log(computerThought);
+//       return computerThought;
+// };
+
+// function rightGuess(userGuess)
+// {
+
+//   if(this.computerThought===userGuess)
+//   {
+//     console.log("You guessed right!");
+//     return true;
+//   }
+//   else{
+//     console.log("You guess wrong!")
+//     return false;
+//   }
+// };
+
+
+ -->
+
+<!-- 
+ <p>Wins: </p><p id="wins"></p>
+    <script>document.getElementsByName("wins").innerHTML=wins</script> -->
+
+<!-- 
+    <br>
+    <p>Losses: </p>
+    <script>document.getElementsByName(document.losses)</script>
+    <br>
+    <p>Guesses Left: </p>
+    <script>document.getElementsByName(document.numGuesses)</script>
+    <br>
+    <p>Your Guesses So Far: </p>
+    <script>document.getElementsByName(document.tempGuesses)</script> -->
+<!-- //Need a break or return statement for outer look
+
+      // DO EVERYTHING IN CONSOLE LOG FIRST AND THEN WORRY ABOUT APPEARANCE
+    //   console.log(wins);
+    //   console.log(losses);
+    //   console.log(numGuesses);
+    //   console.log(tempGuesses);
+
+      // document.writeln("\n");
+      // document.writeln("Wins: "+wins);
+      // document.writeln("\n");
+      // document.writeln("Losses: "+losses);
+      // document.writeln("\n");
+      // document.writeln("Guesses Left: "+numGuesses);
+      // document.writeln("\n");
+      // document.writeln("Your Guesses So Far: "+tempGuesses);
+
+    //   for (var numGuesses = 9; numGuesses < 9; numGuesses++) {
+        // This function is run whenever the user presses a key.
+
+    //     if (carF === "d") {
+    //       car.driveToWork();
+    //       writeStats();
+    //     }
+
+    //     if (carF === "w") {
+    //       car.driveAroundWorld();
+    //       writeStats();
+    //     }
+
+    //     if (carF === "t") {
+    //       car.getTuneUp();
+    //       writeStats();
+    //     }
+
+    //     if (carF === "h") {
+    //       car.honk();
+    //       writeStats();
+    //     }
+    //   };
+
+    //   function writeStats() {
+    //     console.log(car.make);
+    //     console.log(car.model);
+    //     console.log(car.color);
+    //     console.log(car.mileage);
+    //     console.log(car.isWorking);
+    //   }
+
+    //   var car = {
+    //     make: "Honda",
+    //     model: "Fit",
+    //     color: "Blue Raspberry",
+    //     mileage: 3000,
+    //     isWorking: true,
+
+    //     driveToWork: function() {
+    //       alert("Old Mileage: " + this.mileage);
+
+    //       this.mileage = this.mileage + 8;
+
+    //       alert("New mileage: " + this.mileage);
+    //     },
+
+    //     driveAroundWorld: function() {
+    //       alert("Old Mileage: " + this.mileage);
+
+    //       this.mileage = this.mileage + 24000;
+
+    //       alert("New Mileage: " + this.mileage);
+    //       alert("Car needs a tuneup!");
+
+    //       this.isWorking = false;
+    //     },
+
+    //     getTuneUp: function() {
+    //       alert("Car is ready to go!");
+    //       this.isWorking = true;
+    //     },
+
+    //     honk: function() {
+    //       alert("Honk! Honk!");
+    //     }
+    //   };
+    
+
+ 
+//           // Creates an array that lists out all of the options (Rock, Paper, or Scissors).
+//    var computerChoices = ["r", "p", "s"];
+
+// // This function is run whenever the user presses a key.
+// document.onkeyup = function(event) {
+
+//   // Determines which key was pressed.
+//   var userGuess = event.key;
+
+//   if((computerChoices.indexOf(userGuess) === -1)) {
+//     return;
+//   }
+
+//   // Randomly chooses a choice from the options array. This is the Computer's guess.
+//   var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+// // Alerts the key the user pressed (userGuess).
+// alert("User guess: " + userGuess);
+
+// // Alerts the Computer's guess.
+// alert("Computer guess: " + computerGuess);
+
+// var player1=userGuess;
+// var player2=computerGuess;
+
+//   if (player1 === player2)  {
+//        result = "Its a tie!";
+//     }
+//     else {
+//        if (player1 == 'r') {
+//            if (player2 == 'p') {
+//                result = "Player 2 wins!";
+//            }
+//            else
+//            {
+//                result = "Player 1 wins!";
+//            }
+//        }
+//        else if (player1 == 'p')
+//        {
+//            if (player2 == 's') {
+//                result = "Player 2 wins!";
+//            }
+//            else
+//            {
+//                result = "Player 1 wins!";
+//            }
+//        }
+//        else // player 1 == 's'
+//        {
+//            if (player2 == 'r') {
+//                result = "Player 2 wins!";
+//            }
+//            else
+//            {
+//                result = "Player 1 wins!";
+//            }
+//        }
+//     }
+
+// alert(result);
+
+// };
+
+
+//     </script>
+//   </body>
+// </html>
+  -->

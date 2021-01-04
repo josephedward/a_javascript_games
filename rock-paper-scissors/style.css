@@ -1,0 +1,33 @@
+#clearButton
+{
+    /* width:100%; */
+}
+
+#chatBox
+{
+    height:100%;
+}
+
+#watchers{
+
+    width:100%;
+}
+
+#controlBox
+{
+    height:100%;
+}
+
+.card{
+    background-color: lightblue;
+}
+
+
+.btn{
+    color:white;
+    background-color: blue;
+}
+
+.col{
+    /* height:100%; */
+}

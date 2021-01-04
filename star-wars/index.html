@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- Bootstrap File -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+
+    <script src="starwarsgame.js"></script>
+
+    <title>Star Wars RPG</title>
+
+    <h1>Star Wars Role Playing Game</h1>
+  </head>
+  <body>
+    <!-- create pseudocode -->
+    <button class="btn btn-warning btn-lg normal-button" id="instructions">
+      <span class="fa fa-ok"></span> Instructions
+    </button>
+    <ul style="display: none;" id="instructionText">
+      <li>Choose character by clicking on the fighter's picture</li>
+      <li>Defeat all of the remaining fighters</li>
+      <li>Choose an opponent by clicking on an enemy's picture</li>
+      <li>Enemy is moved to a `defender area`</li>
+      <li>Click the `attack` button</li>
+      <li>Your character damages the defender</li>
+      <li>Opponent will lose `HP` (health points)</li>
+      <li>Points are displayed at the bottom of the defender's picture.</li>
+      <li>Opponent character counters the attack</li>
+      <li>Player's character will lose some of their `HP`</li>
+      <li>These are shown at the bottom of the player character's picture.</li>
+      <li>
+        When the defender's `HP` is reduced to zero or below, the player
+        character can now choose a new opponent.
+      </li>
+      <li>Player wins the game by defeating all enemy characters.</li>
+      <li>
+        The player loses the game the game if their character's `HP` falls to
+        zero or below.
+      </li>
+      <li>
+        Each character in the game has 3 attributes: `Health Points`, `Attack
+        Power` and `Counter Attack Power`.
+      </li>
+      <li>
+        Each time the player attacks, their character's Attack Power increases
+        by its base Attack Power.
+      </li>
+      <li>The enemy character only has `Counter Attack Power`.</li>
+      <li>`Counter Attack Power` never changes.</li>
+      <li>
+        The `Health Points`, `Attack Power` and `Counter Attack Power` of each
+        character must differ.
+      </li>
+      <li>No characters in the game can heal or recover Health Points.</li>
+      <li>
+        A winning player must pick their characters wisely by first fighting an
+        enemy with low `Counter Attack Power`
+      </li>
+      <li>
+        This will allow them to take on enemies before they lose all of their
+        `Health Points`.
+      </li>
+      <li>
+        Your players should be able to win and lose the game no matter what
+        character they choose.
+      </li>
+      <li>
+        The challenge should come from picking the right enemies, not choosing
+        the strongest player.
+      </li>
+    </ul>
+
+
+
+    <!-- make other stuff dissapear 
+    has to pass the fighter you clicked on-->
+    <div id="duel" style="display:none;">
+        <div class="row">
+          <div class="col">
+            <div id="fighterSection"></div>
+          </div>
+  
+          <!-- has to double attack power each time -->
+          <div class="col">
+            <button class="btn btn-danger btn-lg attack-button">
+              <span class="fa fa-plus"></span> Attack
+            </button>
+          </div>
+  
+          <!-- bad -->
+          <div class="col">
+            <div id="defenderSection"></div>
+          </div>
+        </div>
+      </div>
+  
+
+
+
+
+
+
+
+
+
+    <!-- make dissappear for fight -->
+    <div class="container" id="goodGuys">
+      
+      <h3>Choose Your Fighter:</h3>
+      <div class="row">
+
+        <div class="card col" id="g1">
+          <img class="characterImage" src="assets/jarjar.jpeg" alt="jarjar" />
+          <div class="card-body">
+            <h5 class="card-title">Jar Jar Binks</h5>
+            <p>Health Points:</p>
+            <div class="healthPoints"></div>
+            <p>Attack Points:</p>
+            <div class="attackPoints"></div>
+          </div>
+        </div>
+
+        <div class="card col" id="g2">
+          <img class="characterImage" src="assets/logray.jpeg" alt="logray" />
+          <div class="card-body">
+            <h5 class="card-title">Logray</h5>
+            <p>Health Points:</p>
+            <div class="healthPoints"></div>
+            <p>Attack Points:</p>
+            <div class="attackPoints"></div>
+          </div>
+        </div>
+
+        <div class="card col" id="g3">
+          <img class="characterImage" src="assets/maxrebo.jpg" alt="maxrebo" />
+          <div class="card-body">
+            <h5 class="card-title">Max Rebo</h5>
+            <p>Health Points:</p>
+            <div class="healthPoints"></div>
+            <p>Attack Points:</p>
+            <div class="attackPoints"></div>
+          </div>
+        </div>
+
+        <div class="card col" id="g4">
+          <img
+            class="characterImage"
+            src="assets/niennunb.jpeg"
+            alt="niennunb"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Nien Nunb</h5>
+            <p>Health Points:</p>
+            <div class="healthPoints"></div>
+            <p>Attack Points:</p>
+            <div class="attackPoints"></div>
+          </div>
+        </div>
+
+        <div class="card col" id="g5">
+          <img
+            class="characterImage"
+            src="assets/padme.png"
+            alt="niennunb"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Padme</h5>
+            <p>Health Points:</p>
+            <div class="healthPoints"></div>
+            <p>Attack Points:</p>
+            <div class="attackPoints"></div>
+          </div>
+        </div>
+
+
+
+
+
+      </div>
+    </div>
+    <!-- end goodguy container -->
+
+    <div class="container" id="badGuys">
+      <h3>Choose Your Opponent:</h3>
+      <div class="row">
+        <div class="card col" id="b1">
+          <img
+            class="characterImage"
+            src="assets/exogorth.jpg"
+            alt="exogorth"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Exogorth</h5>
+            <p>Health Points:</p>
+            <div class="healthPoints"></div>
+            <p>Attack Points:</p>
+            <div class="attackPoints"></div>
+          </div>
+        </div>
+
+        <div class="card col" id="b2">
+          <img class="characterImage" src="assets/salacious.jpeg" alt="crumb" />
+          <div class="card-body">
+            <h5 class="card-title">Salacious B. Crumb</h5>
+            <p>Health Points:</p>
+            <div class="healthPoints"></div>
+            <p>Attack Points:</p>
+            <div class="attackPoints"></div>
+          </div>
+        </div>
+
+        <div class="card col" id="b3">
+          <img class="characterImage" src="assets/ig-88.jpeg" alt="ig88" />
+          <div class="card-body">
+            <h5 class="card-title">IG-88</h5>
+            <p>Health Points:</p>
+            <div class="healthPoints"></div>
+            <p>Attack Points:</p>
+            <div class="attackPoints"></div>
+          </div>
+        </div>
+
+        <div class="card col" id="b4">
+          <img
+            class="characterImage"
+            src="assets/ben quadrinaros.jpg"
+            alt="ben"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Ben Quadrinaros</h5>
+            <p>Health Points:</p>
+            <div class="healthPoints"></div>
+            <p>Attack Points:</p>
+            <div class="attackPoints"></div>
+          </div>
+        </div>
+
+        <div class="card col" id="b5">
+          <img
+            class="characterImage"
+            src="assets/greedo.jpg"
+            alt="ben"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Greedo</h5>
+            <p>Health Points:</p>
+            <div class="healthPoints"></div>
+            <p>Attack Points:</p>
+            <div class="attackPoints"></div>
+          </div>
+        </div>
+
+
+
+        
+      </div>
+    </div>
+    <!-- end badguy container -->
+
+  </body>
+</html>
